@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2018-07-23 10:28:53
 * @Last Modified by:   stephen-zm
-* @Last Modified time: 2018-08-02 08:37:44
+* @Last Modified time: 2018-08-06 22:16:49
 */
 
 'use strict';
@@ -249,18 +249,56 @@ window.onload=function(){
             let bt_left=document.querySelector(".bt_left");
             let bt_right=document.querySelector(".bt_right");
             let cl=document.querySelectorAll(".cl");
-            let luc=document.querySelectorAll(".r_down_one ul");
-            console.log(bt_left,bt_right,cl,luc);
+            let luc=document.querySelector(".r_down_one ul");
             let widthq=296;
-            let timec=1;
-            bt_left.onclick=function(){
-                luc.style.transform=`translateX(${-widthq}px)`;
-            }
+            let timec=0;
+            let noww=0; 
             bt_right.onclick=function(){
+                if(timec>1){
+                    return;
+                }
+                timec++;
                 luc.style.transform=`translateX(${-widthq*timec}px)`;
+                cl[noww].classList.remove("yup");
+                cl[timec].classList.add("yup");
+                noww=timec;
+            }
+            bt_left.onclick=function(){
+                if(timec<1){
+                    return;
+                }
+                timec--;
+                luc.style.transform=`translateX(${-widthq*timec}px)`;
+                cl[noww].classList.remove("yup");
+                cl[timec].classList.add("yup");
+                noww=timec;
+            }
+            for(let j=0;j<cl.length;j++){
+                cl[0].onclick=function(){
+                    luc.style.transform="translateX(0)";
+                    cl[1].classList.remove("yup");
+                    cl[2].classList.remove("yup");
+                    cl[0].classList.add("yup");
+                }
+                cl[1].onclick=function(){
+                    luc.style.transform="translateX(-296px)";
+                    cl[0].classList.remove("yup");
+                    cl[2].classList.remove("yup");
+                    cl[1].classList.add("yup");
+                }
+                cl[2].onclick=function(){
+                    luc.style.transform="translateX(-592px)";
+                    cl[0].classList.remove("yup");
+                    cl[1].classList.remove("yup");
+                    cl[2].classList.add("yup");
+                }
             }
             
-        
-        
+        //点击返回
+        let cao=document.querySelector(".cao");
+        cao.onclick=function(){
+            animate(document.body,{scrollTop:0},2000);
+            animate(document.documentElement,{scrollTop:0},2000);
+        }
 
 }

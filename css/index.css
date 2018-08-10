@@ -2,7 +2,7 @@
 /* @Author: Administrator
 * @Date:   2018-07-23 10:29:20
 * @Last Modified by:   stephen-zm
-* @Last Modified time: 2018-08-06 22:11:48
+* @Last Modified time: 2018-08-10 08:58:00
 */
 @import url("base.css");
 body{
@@ -784,7 +784,6 @@ a{
 .tu{
 	width: 1226px;
 	height: 120px;
-	background: red;
 	margin: 0 auto;
 	margin-top: 28px;
 	margin-bottom: 22px;
